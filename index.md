@@ -3,6 +3,62 @@
 # Python備忘録
 このipynbファイルはPythonをしばらくいじらなくなって課題などでよく使う操作を忘れてしまった時のための備忘録である。
 
+##  $x-y$ 座標でのグラフ
+
+###  一つのグラフ
+簡単なグラフの書き方を最低限復習する。
+下のグラフは`arrange`を用いて $y=\sin x$ のグラフを $x-y$ 平面に $\Delta x=0.01$ おきに $0$ から $2\pi $ までプロットしたものである。
+`linspace`を用いる方法もある。
+
+
+
+```python
+import numpy as np
+import matplotlib.pylab as plt
+
+x = np.arange(0, 2*np.pi, 0.01)
+plt.plot(x,np.sin(x))
+plt.title('y=sin x') 
+plt.xlabel('x') 
+plt.ylabel('y')
+plt.show()
+```
+
+
+    
+![png](python_bibouroku_files/python_bibouroku_3_0.png)
+    
+
+
+`plt.show`でグラフを表示する。
+
+### 複数のグラフ
+
+
+```python
+import numpy as np
+import matplotlib.pylab as plt
+
+x = np.arange(0, 2*np.pi, 0.01)
+plt.plot(x, np.sin(x),label="y=sin x")
+plt.plot(x, np.cos(x), label="y=cos x")
+
+plt.title('')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+plt.show()
+
+```
+
+
+    
+![png](python_bibouroku_files/python_bibouroku_6_0.png)
+    
+
+
+グラフが複数になるとどのグラフだか判別するための凡例が必要。`plt.legend`で凡例を表示できる。そのとき`plot'の中でラベリングすることを忘れずに。
+
 ## 回帰分析
 
 
@@ -33,7 +89,7 @@ plt.show()
 
 
     
-![png](python_bibouroku_files/python_bibouroku_2_1.png)
+![png](python_bibouroku_files/python_bibouroku_9_1.png)
     
 
 
@@ -41,19 +97,15 @@ ExcelではなくPythonで回帰分析をする状況で使うためのもので
 
 なお"optimize.curve_fit(f, x, y)[0]"はなんかよくわからないけど線形にフィッティングした時の(傾き,$y$切片)が入ったリストである。([1]とかにすると標準偏差が出てきた記憶がある）
 ```
-”def f(x, a, b):
-  return a*(x)+b”
+def f(x, a, b):
+return a*(x)+b
 ```
-の中身をたとえば$y=ax^2+b$すなわち
-```
-a*x**2+b  
-```
+の中身をたとえば $y=ax^2+b$ すなわち
+`a*x**2+b`
 とかにするとそのようにフィッティングされ、これまた(a,b)の値が出てくる。
 
 なお
-```
-plt.scatter(x, y)
-```
+`plt.scatter(x, y)`
 は
 ```
 x = np.array([1, 2, 3, 4])
@@ -103,14 +155,9 @@ plt.show()
 
 
     
-![png](python_bibouroku_files/python_bibouroku_6_0.png)
+![png](python_bibouroku_files/python_bibouroku_13_0.png)
     
 
-
-```
-plt.show()
-```
-でグラフを表示する。
 
 ### 多変数の場合
 ベクトル値関数${Y}\left(t\right)=\left(y_1,y_2\right)$の初期値問題
@@ -151,7 +198,7 @@ plt.show()
 
 
     
-![png](python_bibouroku_files/python_bibouroku_9_0.png)
+![png](python_bibouroku_files/python_bibouroku_15_0.png)
     
 
 
