@@ -1,7 +1,20 @@
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script> <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['\$', '\$'], ['\\(', '\\)']],
+                processEscapes: true
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            }
+        });
+        </script>
+        <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 # Python備忘録
-このipynbファイルはPythonをしばらくいじらなくなって課題などでよく使う操作を忘れてしまった時のための備忘録である。
+これはPythonをしばらくいじらなくなって課題などでよく使う操作を忘れてしまった時のための備忘録である。
+
+[戻る](https://yumannimac.github.io/first/)
 
 ##  $x-y$ 座標でのグラフ
 
@@ -26,7 +39,7 @@ plt.show()
 
 
     
-![png](python_bibouroku_files/python_bibouroku_3_0.png)
+![png](python_bibouroku_files/python_bibouroku_4_0.png)
     
 
 
@@ -53,11 +66,11 @@ plt.show()
 
 
     
-![png](python_bibouroku_files/python_bibouroku_6_0.png)
+![png](python_bibouroku_files/python_bibouroku_7_0.png)
     
 
 
-グラフが複数になるとどのグラフだか判別するための凡例が必要。`plt.legend`で凡例を表示できる。そのとき`plot'の中でラベリングすることを忘れずに。
+グラフが複数になるとどのグラフだか判別するための凡例が必要。`plt.legend`で凡例を表示できる。そのとき`plot`の中でラベリングすることを忘れずに。
 
 ## 回帰分析
 
@@ -89,7 +102,7 @@ plt.show()
 
 
     
-![png](python_bibouroku_files/python_bibouroku_9_1.png)
+![png](python_bibouroku_files/python_bibouroku_10_1.png)
     
 
 
@@ -155,7 +168,7 @@ plt.show()
 
 
     
-![png](python_bibouroku_files/python_bibouroku_13_0.png)
+![png](python_bibouroku_files/python_bibouroku_14_0.png)
     
 
 
@@ -198,8 +211,12 @@ plt.show()
 
 
     
-![png](python_bibouroku_files/python_bibouroku_15_0.png)
+![png](python_bibouroku_files/python_bibouroku_16_0.png)
     
 
 
 $3$変数以上の場合も同様。
+
+[戻る](https://yumannimac.github.io/first/)
+
+<script src="https://blz-soft.github.io/md_style/release/v1.2/md_style.js" ></script>
