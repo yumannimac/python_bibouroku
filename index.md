@@ -404,7 +404,19 @@ plt.show()
     
 ![png](python_bibouroku_files/python_bibouroku_24_1.png)
     
-
+$$
+\makeatletter
+  \def\@drac@d#1#2{\dfrac{\raisebox{-.44ex}{$\,#1\,$}}{\raisebox{.1ex}{$\,#2\,$}}}
+  %\def\@drac@t#1#2{\dfrac{\raisebox{-0.2ex}[0.75ex][0ex]{$\,#1\,$}}{\raisebox{-0.2ex}[0ex][0.75ex]{$\,#2\,$}}}
+  \def\@drac@t#1#2{\dfrac{\lower.44ex\hbox{$\,\raisebox{0.2ex}[2ex][0ex]{$ #1 $}\,$}}{\lower-.1ex\hbox{$\,\raisebox{-0.1ex}[0ex][1ex]{$ #2 $}\,$}}}
+  %\def\@drac@t#1#2{\dfrac{\lower.44ex\hbox{$\, #1 \,$}}{\lower-.1ex\hbox{$\, #2 \,$}}}
+  \def\@drac@s#1#2{\scriptstyle\frac{#1}{#2}}
+  \def\@drac@ss#1#2{\scriptscriptstyle\frac{#1}{#2}}
+  %
+  \def\drac#1#2{\mathchoice{\@drac@d{#1}{#2}}{\@drac@t{#1}{#2}}{\@drac@s{#1}{#2}}{\@drac@ss{#1}{#2}}}
+  \makeatother
+$$
+ $\drac{1}{2}$ 
 
 [戻る](https://yumannimac.github.io/first/)
 
