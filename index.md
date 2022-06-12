@@ -405,7 +405,6 @@ plt.show()
 ![png](python_bibouroku_files/python_bibouroku_24_1.png)
     
 
- $\dfrac{\lower.44ex\hbox{$\,\raisebox{0.2ex}[2ex][0ex]{$ 1 $}\,$}}{\lower-.1ex\hbox{$\,\raisebox{-0.1ex}[0ex][1ex]{$ 2 $}\,$}}$ 
 
 [戻る](https://yumannimac.github.io/first/)
 
