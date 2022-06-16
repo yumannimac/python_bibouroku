@@ -530,7 +530,7 @@ print(result)
            x: array([ 0.49999812, -0.70710986,  0.49999753])
 
 
-ちなみに条件付き極値を求めるのに必要なラグランジュの未定乗数法の証明は[こちら]（https://yumannimac.github.io/calculus/）に付した。
+ちなみに条件付き極値を求めるのに必要なラグランジュの未定乗数法の証明は[こちら](https://yumannimac.github.io/calculus/)に付した。
 
 [ホームページに戻る](https://yumannimac.github.io/Homepage/)
 
