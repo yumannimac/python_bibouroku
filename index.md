@@ -14,6 +14,8 @@
       }
     };
   </script>
+  
+
 
 # Python備忘録
 これはPythonをしばらくいじらなくなって課題などでよく使う操作を忘れてしまった時のための備忘録である。
@@ -348,7 +350,7 @@ plt.show()
 
 ```python
 import numpy as np
-from scipy import integrate
+from scipy import integrate 
 import matplotlib.pyplot as plt
 
 
@@ -406,12 +408,130 @@ plt.show()
     
 
 
+
+## 条件付き関数の最大、最小問題
+
+たとえば次のような問題を考える。
+
+---------
+
+$g\left(x,y,z\right)=x^2+y^2+z^2-1=0$ のもとで関数$ f\left(x,y,z\right)=x^2+y^2+z^2+4xy+4yz$ の極値を求めよ。
+
+--- 
+
+問題を解き切ることは不可能であるが最大値と最小値を求めることはpythonによってできる。
+
+
+```python
+from scipy.optimize import minimize
+
+import numpy as np
+
+# 目的関数
+
+
+def func(x):
+    return x[0] ** 2+x[1]**2+x[2]**2+4*x[0]*x[1]+4*x[1]*x[2]
+
+# 制約条件式
+
+
+def cons(x):
+    return x[0] ** 2+x[1]**2+x[2]**2-1
+cons = (
+    {'type': 'eq', 'fun': cons},
+)
+x=[0.7,0.1,-0.7]
+
+result = minimize(func, x0=x, constraints=cons, method="SLSQP")
+print(result)
+```
+
+         fun: -1.8284271332952493
+         jac: array([ 1.82841684, -2.58580284,  1.82841423])
+     message: 'Optimization terminated successfully'
+        nfev: 61
+         nit: 14
+        njev: 14
+      status: 0
+     success: True
+           x: array([-0.50000087,  0.70710464, -0.50000217])
+
+
+`x: array([-0.50000087,  0.70710464, -0.50000217])`が極値を与える $\left(x,y,z\right)$ の組、`fun: -1.8284271332952493`がその時の $f\left(x\right)$ の値を表す。
+
+`minimize`関数は`scipy`ライブラリに含まれているもののなぜか`maximize`はないので最大値を求めたければ（仕方ないが）`func`の中身に`-`をつけて「最小値」を与える $\left(x,y,z\right)$ の組と最小値を計算するしかなさそう。極値に関しては手で計算して本当に極値になりそうか判断する基準にするくらいはできる。例えば下のコードでは $\left(x,y,z\right)$ の範囲を $\left(0.7 \pm 0.2,-0.5 \pm  0.2, 0.7 \pm 0.2	\right)$ にすることによって $\left(\dfrac{1}{\sqrt{2}},-\dfrac{1}{2},\dfrac{1}{\sqrt{2}}\right)$ が極値になるかを確かめている。
+
+
+```python
+from scipy.optimize import minimize
+
+#import scipy
+import numpy as np
+
+# 目的関数
+
+
+def func(x):
+    return x[0] ** 2+x[1]**2+x[2]**2+4*x[0]*x[1]+4*x[1]*x[2]
+
+# 制約条件式
+
+
+def cons(x):
+    return x[0] ** 2+x[1]**2+x[2]**2-1
+
+# 範囲を確かめたい(x,y,z)の±0.2にして検算する,ineq は\geq0を表す
+def p1(x):
+	return (x[0]-0.5)+0.2
+
+
+def p2(x):
+	return -(x[0]-0.5)+0.2
+
+
+def p3(x):
+	return (x[1]+0.7)+0.2
+
+
+def p4(x):
+	return -(x[1]-0.7)+0.2
+
+
+def p5(x):
+	return (x[2]-0.5)+0.2
+
+
+def p6(x):
+	return -(x[2]-0.5)+0.2
+cons = (
+    {'type': 'eq', 'fun': cons},
+    {'type': 'ineq', 'fun': p1},
+   	{'type': 'ineq', 'fun': p2},
+   	{'type': 'ineq', 'fun': p3},
+   	{'type': 'ineq', 'fun': p4},
+   	{'type': 'ineq', 'fun': p5},
+   	{'type': 'ineq', 'fun': p6},
+)
+x=[0.55,-0.7,0.55]
+
+result = minimize(func, x0=x, constraints=cons, method="SLSQP")
+print(result)
+```
+
+         fun: -1.8284271368582918
+         jac: array([-1.82844317,  2.58576292, -1.82844436])
+     message: 'Optimization terminated successfully'
+        nfev: 21
+         nit: 5
+        njev: 5
+      status: 0
+     success: True
+           x: array([ 0.49999812, -0.70710986,  0.49999753])
+
+
+ちなみに条件付き極値を求めるのに必要なラグランジュの未定乗数法の証明は[こちら]（https://yumannimac.github.io/calculus/）に付した。
+
 [ホームページに戻る](https://yumannimac.github.io/Homepage/)
 
 <script src="https://blz-soft.github.io/md_style/release/v1.2/md_style.js" ></script>
-
-
-
-
-
-
