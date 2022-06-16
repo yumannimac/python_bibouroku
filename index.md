@@ -18,7 +18,7 @@
 # Python備忘録
 これはPythonをしばらくいじらなくなって課題などでよく使う操作を忘れてしまった時のための備忘録である。
 
-[戻る](https://yumannimac.github.io/first/)
+[ホームページに戻る](https://yumannimac.github.io/Homepage/)
 
 ##  $x-y$ 座標でのグラフ
 
@@ -406,7 +406,7 @@ plt.show()
     
 
 
-[戻る](https://yumannimac.github.io/first/)
+[ホームページに戻る](https://yumannimac.github.io/Homepage/)
 
 <script src="https://blz-soft.github.io/md_style/release/v1.2/md_style.js" ></script>
 
